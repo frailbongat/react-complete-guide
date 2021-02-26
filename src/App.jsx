@@ -41,13 +41,13 @@ class App extends Component {
       backgroundColor: 'Black',
       padding: '10px 15px',
       color: 'yellow',
-      marginTop: '3rem',
       borderRadius: '5px',
       border: 'none',
       cursor: 'pointer',
     };
 
     let persons = null;
+    const classes = [];
 
     if (this.state.showPerson) {
       persons = (
@@ -65,10 +65,16 @@ class App extends Component {
           })}
         </div>
       );
+
+      style.backgroundColor = 'blue';
+
+      classes.push('text-blue');
+      classes.push('text-normal');
     }
 
     return (
       <div className='App'>
+        <h1 className={classes.join(' ')}>This is reactjs!</h1>
         <button onClick={this.togglePersonHandler} style={style}>
           Toggle Person
         </button>
