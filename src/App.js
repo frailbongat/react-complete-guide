@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import Person from './Person/Person';
 
 const StyledButton = styled.button`
-  background-color: Black;
+  background-color: ${(props) => (props.alt ? 'blue' : 'black')};
   padding: 10px 15px;
   color: yellow;
-  borderradius: 5px;
+  border-radius: 5px;
   border: none;
   cursor: pointer;
 
@@ -78,7 +78,10 @@ class App extends Component {
     return (
       <div className='App'>
         <h1 className={classes.join(' ')}>This is reactjs!</h1>
-        <StyledButton onClick={this.togglePersonHandler}>
+        <StyledButton
+          alt={this.state.showPerson}
+          onClick={this.togglePersonHandler}
+        >
           Toggle Person
         </StyledButton>
         {persons}
