@@ -1,20 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
-import styled from 'styled-components';
+import classes from './App.css';
 import Person from './Person/Person';
-
-const StyledButton = styled.button`
-  background-color: ${(props) => (props.alt ? 'blue' : 'black')};
-  padding: 10px 15px;
-  color: yellow;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-
-  &:hover {
-    font-weight: bold;
-  }
-`;
 
 class App extends Component {
   state = {
@@ -52,7 +38,8 @@ class App extends Component {
 
   render() {
     let persons = null;
-    const classes = [];
+    const classesTwo = [];
+    const btnClasses = [classes.button];
 
     if (this.state.showPerson) {
       persons = (
@@ -71,19 +58,20 @@ class App extends Component {
         </div>
       );
 
-      classes.push('text-blue');
-      classes.push('text-normal');
+      classesTwo.push(classes.textBlue);
+      classesTwo.push(classes.textNormal);
+      btnClasses.push(classes.bgDodgerblue);
     }
 
     return (
-      <div className='App'>
-        <h1 className={classes.join(' ')}>This is reactjs!</h1>
-        <StyledButton
-          alt={this.state.showPerson}
+      <div className={classes.App}>
+        <h1 className={classesTwo.join(' ')}>This is reactjs!</h1>
+        <button
+          className={btnClasses.join(' ')}
           onClick={this.togglePersonHandler}
         >
           Toggle Person
-        </StyledButton>
+        </button>
         {persons}
       </div>
     );
