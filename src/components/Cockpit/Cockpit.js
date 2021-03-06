@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classes from './Cockpit.css';
 
 const cockpit = (props) => {
+  useEffect(() => {
+    console.log('[Cockpit.js] useEffect');
+    // Https request...
+    return () => {
+      console.log('[Cockpit.js] Cleanup works in useEffect');
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log('[Cockpit.js] 2nd useEffect');
+    return () => {
+      console.log('[Cockpit.js] clean up work in 2nd work useEfffect');
+    };
+  });
+
   console.log('[Cockpit.js] render');
 
   const classesTwo = [];
